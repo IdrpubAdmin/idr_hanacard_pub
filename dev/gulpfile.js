@@ -11,6 +11,9 @@ const pcFocus = require('postcss-focus');
 const pcFontpath = require('postcss-fontpath');
 const stylelint = require('stylelint');
 const extender = require('gulp-html-extend');
+const convertEncoding = require('gulp-convert-encoding');
+const gulpReplace = require('gulp-replace');
+
 
 gulp.task('sass', function() {
 	return gulp.src('css_dev/*.scss')
@@ -32,6 +35,8 @@ gulp.task('sass', function() {
 		[pcFocus()]
 		))	
 	.pipe(sourcemaps.write('../css'))
+	.pipe(gulpReplace('@charset "UTF-8";', '@charset "EUC-KR";'))
+	.pipe(convertEncoding({to: 'EUC-KR'}))
 	.pipe(gulp.dest('../assets/css'))
 });
 
@@ -55,6 +60,7 @@ gulp.task('sass-mrkp', function() {
 			[pcFocus()]
 		))
 		.pipe(sourcemaps.write('../css'))
+		.pipe(convertEncoding({to: 'EUC-KR'}))
 		.pipe(gulp.dest('../markup_guide/assets/css'))
 });
 
@@ -62,6 +68,7 @@ gulp.task('extend', function () {
 	return gulp.src('page_dev/**/*.html')
 	.pipe(extender({annotations:false,verbose:false,root:"../"}))
 	.pipe(plumber())
+	.pipe(convertEncoding({to: 'EUC-KR'}))
 	.pipe(gulp.dest('../pages/'));
 });
 
@@ -98,7 +105,7 @@ gulp.task('watch', function() {
 	gulp.watch('page_include/**/*.html', gulp.series('extend'));
 	gulp.watch('js_dev/*.js', gulp.series('babel'));
 
-	//markup_guide_dev í´ë”ê°€ ìˆëŠ” ê²½ìš°ë§Œ
+	//markup_guide_dev ?´?”ê°? ?ˆ?Š” ê²½ìš°ë§?
 	gulp.watch('markup_guide_dev/assets/css/*.scss', gulp.series('sass-mrkp'));
 	gulp.watch('markup_guide_dev/**/*.html', gulp.series('extend-mrkp'));
 	gulp.watch('markup_guide_dev/assets/js/*.js', gulp.series('babel-mrkp'));

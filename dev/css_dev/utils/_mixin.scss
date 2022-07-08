@@ -1,4 +1,4 @@
-@charset "utf-8";
+@charset "UTF-8";
 // ========================================================== */
 // file		: mixin
 // writer	: IDR
@@ -108,23 +108,23 @@
 	}
 }
 @mixin full {
-	 @media (max-width: #{$full}){
+	@media (max-width: #{$full_w}){
 		@content;
 	}
 }
 @mixin middle {
-	 @media (min-width: 1470px){
+	@media screen and (max-width: #{$middle_w - 1px}){
 		@content;
 	}
 }
 @mixin narrow {
-	 @media (min-width: #{$narrow}){
+	@media (max-width: #{$narrow_w}){
 		@content;
 	}
 }
 @mixin t-idt() {
-  text-indent:-5000px;
-  font-size:0;
+	text-indent:-5000px;
+	font-size:0;
 }
 @mixin ellipsis {
 	overflow: hidden;
@@ -149,7 +149,7 @@
 	}
 }
 @mixin background-position( $f1, $f2 ){
-  @include css3-prefix('background-position', $f1 $f2);
+	@include css3-prefix('background-position', $f1 $f2);
 }
 @mixin set-df-padding(){
 	padding-right:$con_pd;
@@ -160,7 +160,7 @@
 	margin-left:-$con_pd;
 }
 @mixin link-cursor(){
-  cursor:pointer;
+	cursor:pointer;
 }
 @mixin s-vh($property, $value) {
 	#{$property}:calc((var(--vh, 1vh) * 100) + #{$value});

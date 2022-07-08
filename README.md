@@ -35,5 +35,3 @@
    ```
    node ./yarn-1.22.17.js install --offline --production
    ```
-
-   set NODE_TLS_REJECT_UNAUTHORIZED=0

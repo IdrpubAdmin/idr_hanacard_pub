@@ -14,45 +14,32 @@ const extender = require('gulp-html-extend');
 const convertEncoding = require('gulp-convert-encoding');
 const gulpReplace = require('gulp-replace');
 
-
-gulp.task('sass', function() {
+gulp.task('sass', function () {
 	return gulp.src('css_dev/*.scss')
-	.pipe(plumber())
-	.pipe(sourcemaps.init())
-	.pipe(sassGlob())
-	.pipe(sass({outputStyle: 'compact'}).on('error',sass.logError))
-	.pipe(postcss(
-		[pcFontpath({
-			formats: [
-	    {	type:'embedded-opentype', ext: 'eot' },
-	    {	type: 'woff2', ext: 'woff2' },
-	    {	type: 'woff', ext: 'woff' },
-	    {	type: 'truetype', ext: 'ttf' }    
-	  ]
-	 })],
-		//[autoprefixer({browsers: ['last 2 versions']})],
-		[autoprefixer()],
-		[pcFocus()]
-		))	
-	.pipe(sourcemaps.write('../css'))
-	.pipe(gulpReplace('@charset "UTF-8";', '@charset "EUC-KR";'))
-	.pipe(convertEncoding({to: 'EUC-KR'}))
-	.pipe(gulp.dest('../assets/css'))
-});
-
-gulp.task('sass-mrkp', function() {
-	return gulp.src('markup_guide_dev/assets/css/*.scss')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(sassGlob())
-		.pipe(sass({outputStyle: 'compact'}).on('error',sass.logError))
+		.pipe(sass({
+			outputStyle: 'compact'
+		}).on('error', sass.logError))
 		.pipe(postcss(
 			[pcFontpath({
-				formats: [
-					{	type:'embedded-opentype', ext: 'eot' },
-					{	type: 'woff2', ext: 'woff2' },
-					{	type: 'woff', ext: 'woff' },
-					{	type: 'truetype', ext: 'ttf' }
+				formats: [{
+					type: 'embedded-opentype',
+					ext: 'eot'
+				},
+					{
+						type: 'woff2',
+						ext: 'woff2'
+					},
+					{
+						type: 'woff',
+						ext: 'woff'
+					},
+					{
+						type: 'truetype',
+						ext: 'ttf'
+					}
 				]
 			})],
 			//[autoprefixer({browsers: ['last 2 versions']})],
@@ -60,56 +47,132 @@ gulp.task('sass-mrkp', function() {
 			[pcFocus()]
 		))
 		.pipe(sourcemaps.write('../css'))
-		.pipe(convertEncoding({to: 'EUC-KR'}))
-		.pipe(gulp.dest('../markup_guide/assets/css'))
+		.pipe(gulpReplace('@charset "UTF-8";', '@charset "EUC-KR";'))
+		.pipe(convertEncoding({
+			to: 'EUC-KR'
+		}))
+		.pipe(gulp.dest('../assets/css'))
+});
+
+gulp.task('sass-mrkp', function () {
+	return gulp.src('markup_guide_dev/mrkp_assets/css/*.scss')
+		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(sassGlob())
+		.pipe(sass({
+			outputStyle: 'compact'
+		}).on('error', sass.logError))
+		.pipe(postcss(
+			[pcFontpath({
+				formats: [{
+					type: 'embedded-opentype',
+					ext: 'eot'
+				},
+					{
+						type: 'woff2',
+						ext: 'woff2'
+					},
+					{
+						type: 'woff',
+						ext: 'woff'
+					},
+					{
+						type: 'truetype',
+						ext: 'ttf'
+					}
+				]
+			})],
+			//[autoprefixer({browsers: ['last 2 versions']})],
+			[autoprefixer()],
+			[pcFocus()]
+		))
+		.pipe(sourcemaps.write('../css'))
+		.pipe(gulpReplace('@charset "UTF-8";', '@charset "EUC-KR";'))
+		.pipe(convertEncoding({
+			to: 'EUC-KR'
+		}))
+		.pipe(gulp.dest('../markup_guide/mrkp_assets/css'))
 });
 
 gulp.task('extend', function () {
-	return gulp.src('page_dev/**/*.html')
-	.pipe(extender({annotations:false,verbose:false,root:"../"}))
-	.pipe(plumber())
-	.pipe(convertEncoding({to: 'EUC-KR'}))
-	.pipe(gulp.dest('../pages/'));
+	return gulp.src('pages_dev/**/*.html')
+		.pipe(extender({
+			annotations: false,
+			verbose: false,
+			root: "../"
+		}))
+		.pipe(plumber())
+		.pipe(convertEncoding({
+			to: 'EUC-KR'
+		}))
+		.pipe(gulp.dest('../pages/'));
 });
 
 gulp.task('extend-mrkp', function () {
-	return gulp.src('markup_guide_dev/**/*.html')
-		.pipe(extender({annotations:false,verbose:false,root:"../"}))
+	return gulp.src('markup_guide_dev/mrkp_pages/*.html')
+		.pipe(extender({
+			annotations: false,
+			verbose: false,
+			root: "../"
+		}))
 		.pipe(plumber())
+		.pipe(convertEncoding({
+			to: 'EUC-KR'
+		}))
+		.pipe(gulp.dest('../markup_guide/mrkp_pages/'));
+});
+gulp.task('extend-mrkp-root', function () {
+	return gulp.src('markup_guide_dev/*.html')
+		.pipe(extender({
+			annotations: false,
+			verbose: false,
+			root: "../"
+		}))
+		.pipe(plumber())
+		.pipe(convertEncoding({
+			to: 'EUC-KR'
+		}))
 		.pipe(gulp.dest('../markup_guide/'));
 });
 
 gulp.task('babel', function () {
 	return gulp.src('js_dev/*.js')
 		.pipe(babel({
-			//presets: ["@babel/preset-env"]
-			presets: ["@babel/preset-env", "@babel/preset-react"]
+			presets: ["@babel/preset-env"]
+			// presets: ["@babel/preset-env", "@babel/preset-react"]
 		}))
 		.pipe(plumber())
+		.pipe(convertEncoding({
+			to: 'EUC-KR'
+		}))
 		.pipe(gulp.dest('../assets/js/'));
 });
 
 gulp.task('babel-mrkp', function () {
-	return gulp.src('markup_guide_dev/assets/js/*.js')
+	return gulp.src('markup_guide_dev/mrkp_assets/js/*.js')
 		.pipe(babel({
-			//presets: ["@babel/preset-env"]
-			presets: ["@babel/preset-env", "@babel/preset-react"]
+			presets: ["@babel/preset-env"]
+			// presets: ["@babel/preset-env", "@babel/preset-react"]
 		}))
 		.pipe(plumber())
-		.pipe(gulp.dest('../markup_guide/assets/js/'));
+		.pipe(convertEncoding({
+			to: 'EUC-KR'
+		}))
+		.pipe(gulp.dest('../markup_guide/mrkp_assets/js/'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
 	gulp.watch('css_dev/**/*.scss', gulp.series('sass'));
-	gulp.watch('page_dev/**/*.html', gulp.series('extend'));
-	gulp.watch('page_include/**/*.html', gulp.series('extend'));
+	gulp.watch('pages_dev/**/*.html', gulp.series('extend'));
+	gulp.watch('pages_include/**/*.html', gulp.series('extend'));
 	gulp.watch('js_dev/*.js', gulp.series('babel'));
 
-	//markup_guide_dev ?è¥?çîÍ∞? ?ûà?äî Í≤ΩÏö∞Îß?
-	gulp.watch('markup_guide_dev/assets/css/*.scss', gulp.series('sass-mrkp'));
-	gulp.watch('markup_guide_dev/**/*.html', gulp.series('extend-mrkp'));
-	gulp.watch('markup_guide_dev/assets/js/*.js', gulp.series('babel-mrkp'));
+	//markup_guide_dev Ìè¥ÎçîÍ∞Ä ÏûàÎäî Í≤ΩÏö∞Îßå
+	gulp.watch('markup_guide_dev/mrkp_assets/css/*.scss', gulp.series('sass-mrkp'));
+	gulp.watch('markup_guide_dev/*.html', gulp.series('extend-mrkp-root'));
+	gulp.watch('markup_guide_dev/mrkp_pages/*.html', gulp.series('extend-mrkp'));
+	gulp.watch('markup_guide_dev/mrkp_assets/js/*.js', gulp.series('babel-mrkp'));
 
 });
 
-gulp.task('default',gulp.parallel(['watch']));
+gulp.task('default', gulp.parallel(['watch']));

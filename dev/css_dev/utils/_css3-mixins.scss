@@ -24,11 +24,11 @@
 
 @mixin css3-prefix($property, $value) {
   -webkit-#{$property}: #{$value};
-   -khtml-#{$property}: #{$value};
-     -moz-#{$property}: #{$value};
-      -ms-#{$property}: #{$value};
-       -o-#{$property}: #{$value};
-          #{$property}: #{$value};
+  -khtml-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value};
 }
 
 
@@ -37,14 +37,14 @@
 /// @param {Color} $endColor [#999999] - End Color
 
 @mixin background-gradient($startColor: #3C3C3C, $endColor: #999999) {
-    background-color: $startColor;
-    background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
-    background-image: -webkit-linear-gradient(top, $startColor, $endColor);
-    background-image:    -moz-linear-gradient(top, $startColor, $endColor);
-    background-image:     -ms-linear-gradient(top, $startColor, $endColor);
-    background-image:      -o-linear-gradient(top, $startColor, $endColor);
-    background-image:         linear-gradient(top, $startColor, $endColor);
-    filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
+  background-color: $startColor;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+  background-image:    -moz-linear-gradient(top, $startColor, $endColor);
+  background-image:     -ms-linear-gradient(top, $startColor, $endColor);
+  background-image:      -o-linear-gradient(top, $startColor, $endColor);
+  background-image:         linear-gradient(top, $startColor, $endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
 }
 
 
@@ -53,14 +53,14 @@
 /// @param {Color} $endColor [#999999] - End Color
 
 @mixin background-horizontal($startColor: #3C3C3C, $endColor: #999999) {
-    background-color: $startColor;
-    background-image: -webkit-gradient(linear, left top, right top, from($startColor), to($endColor));
-    background-image: -webkit-linear-gradient(left, $startColor, $endColor);
-    background-image:    -moz-linear-gradient(left, $startColor, $endColor);
-    background-image:     -ms-linear-gradient(left, $startColor, $endColor);
-    background-image:      -o-linear-gradient(left, $startColor, $endColor);
-    background-image:         linear-gradient(left, $startColor, $endColor);
-    filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}', gradientType='1');
+  background-color: $startColor;
+  background-image: -webkit-gradient(linear, left top, right top, from($startColor), to($endColor));
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+  background-image:    -moz-linear-gradient(left, $startColor, $endColor);
+  background-image:     -ms-linear-gradient(left, $startColor, $endColor);
+  background-image:      -o-linear-gradient(left, $startColor, $endColor);
+  background-image:         linear-gradient(left, $startColor, $endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}', gradientType='1');
 }
 
 
@@ -69,14 +69,14 @@
 /// @param {Color} $endColor [#3C3C3C] - End Color
 
 @mixin background-horizontal-inverse($startColor: #999999, $endColor: #3C3C3C) {
-    background-color: $startColor;
-    background-image: -webkit-gradient(linear, right top, left top, from($startColor), to($endColor));
-    background-image: -webkit-linear-gradient(right, $startColor, $endColor);
-    background-image:    -moz-linear-gradient(right, $startColor, $endColor);
-    background-image:     -ms-linear-gradient(right, $startColor, $endColor);
-    background-image:      -o-linear-gradient(right, $startColor, $endColor);
-    background-image:         linear-gradient(right, $startColor, $endColor);
-    filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$endColor}', endColorStr='#{$startColor}', gradientType='1');
+  background-color: $startColor;
+  background-image: -webkit-gradient(linear, right top, left top, from($startColor), to($endColor));
+  background-image: -webkit-linear-gradient(right, $startColor, $endColor);
+  background-image:    -moz-linear-gradient(right, $startColor, $endColor);
+  background-image:     -ms-linear-gradient(right, $startColor, $endColor);
+  background-image:      -o-linear-gradient(right, $startColor, $endColor);
+  background-image:         linear-gradient(right, $startColor, $endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$endColor}', endColorStr='#{$startColor}', gradientType='1');
 }
 
 
@@ -87,12 +87,12 @@
 /// @param {Percentage} $endPos [100%] - End position
 
 @mixin background-radial($startColor: #FFFFFF, $startPos: 0%, $endColor: #000000, $endPos:100%) {
-    background: -moz-radial-gradient(center, ellipse cover, $startColor $startPos, $endColor $endPos);
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop($startPos,$startColor), color-stop($endPos,$endColor));
-    background: -webkit-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
-    background: -o-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
-    background: -ms-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
-    background: radial-gradient(ellipse at center, $startColor $startPos,$endColor $endPos);
+  background: -moz-radial-gradient(center, ellipse cover, $startColor $startPos, $endColor $endPos);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop($startPos,$startColor), color-stop($endPos,$endColor));
+  background: -webkit-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
+  background: -o-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
+  background: -ms-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
+  background: radial-gradient(ellipse at center, $startColor $startPos,$endColor $endPos);
 }
 
 
@@ -125,7 +125,7 @@
 /// @require {mixin} css3-prefix
 
 @mixin border-radius($radius: 5px) {
-    @include css3-prefix('border-radius', $radius);
+  @include css3-prefix('border-radius', $radius);
 }
 
 
@@ -180,8 +180,8 @@
 @mixin box-rgba($r: 60, $g: 3, $b: 12, $opacity: 0.23, $color: #3C3C3C) {
   background-color: transparent;
   background-color: rgba($r, $g, $b, $opacity);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$color}',endColorstr='#{$color}');
-            zoom:   1;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$color}',endColorstr='#{$color}');
+  zoom:   1;
 }
 
 
@@ -281,11 +281,11 @@
 /// @require {mixin} css3-prefix
 
 @mixin opacity($opacity: 0.5) {
-    $opacityMultiplied: ($opacity * 100);
+  $opacityMultiplied: ($opacity * 100);
 
-    filter:         alpha(opacity=$opacityMultiplied);
-    -ms-filter:     "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $opacityMultiplied + ")";
-    @include css3-prefix('opacity', $opacity);
+  filter:         alpha(opacity=$opacityMultiplied);
+  -ms-filter:     "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $opacityMultiplied + ")";
+  @include css3-prefix('opacity', $opacity);
 }
 
 
@@ -320,8 +320,8 @@
 @mixin rotate($deg: 0, $m11: 0, $m12: 0, $m21: 0, $m22: 0) {
   @include css3-prefix('transform', rotate($deg + deg));
   filter: progid:DXImageTransform.Microsoft.Matrix(
-       M11=#{$m11}, M12=#{$m12}, M21=#{$m21}, M22=#{$m22}, sizingMethod='auto expand');
-    zoom: 1;
+                  M11=#{$m11}, M12=#{$m12}, M21=#{$m21}, M22=#{$m22}, sizingMethod='auto expand');
+  zoom: 1;
 }
 
 
@@ -332,7 +332,7 @@
 /// @param {Color} $color [rgba(0,0,0,.4)] - Color
 
 @mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4)) {
-    text-shadow: $x $y $blur $color;
+  text-shadow: $x $y $blur $color;
 }
 
 
@@ -387,11 +387,11 @@
 /// @require {mixin} css3-prefix
 
 @mixin triple-borders($colorOne: #3C3C3C, $colorTwo: #999999, $colorThree: #000000, $radius: 0) {
-    border: 1px solid $colorOne;
+  border: 1px solid $colorOne;
 
-    @include border-radius($radius);
+  @include border-radius($radius);
 
-    @include css3-prefix('box-shadow', "0 0 0 1px #{$colorTwo}, 0 0 0 2px #{$colorThree}");
+  @include css3-prefix('box-shadow', "0 0 0 1px #{$colorTwo}, 0 0 0 2px #{$colorThree}");
 }
 
 

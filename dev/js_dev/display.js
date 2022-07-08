@@ -1,9 +1,12 @@
-"use strict";
+/*** assist.js ***/
+function setAuthClass(authVal) {
+  $('.auth_wrap').addClass(authVal);
+}
 
-/**
- * Common Methods
- */
+function activeTabTy(targetTabs, idx) {
+  $(targetTabs + ' ul li').eq(idx).addClass('on');
+}
 
-(function(){
-
-})();
+;(function ($) {
+  console.log("assist.js start");
+})(jQuery);
